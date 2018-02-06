@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Go Away</title>
-  </head>
-  <body>
-    This site generates pdfs for another site. Nothing to see here.
-  </body>
-</html>
-
-
 <?php
+echo "in the php tag";
 require_once phpwkhtmltopdf/src/Pdf.php;
 echo "required";
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
@@ -20,6 +9,6 @@ echo "got the url";
 // $pdf->binary = 'C:\...';
 
 if (!$pdf->saveAs('page.pdf')) {
-  
+
     echo $pdf->getError();
 } ?>
