@@ -8,7 +8,7 @@ $pdf = new Pdf('http://google.com');
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
-if (!$pdf->saveAs('/usr/share/httpd/html/page.pdf')) {
+if (!$pdf->saveAs('/usr/share/httpd/html/pdf-files/page.pdf')) {
     echo $pdf->getError();
 }
  ?>
