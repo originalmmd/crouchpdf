@@ -12,7 +12,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     echo $pdf->getError();
 }else {
   // the message
-  $msg = 'Your catalogue is ready!\nGet it here. <a href="http://108.61.211.236/crouchpdf/'.$_POST['catalogue_name']'.pdf">Download</a>';
+  $msg = "Your catalogue is ready!\nGet it here.";
 
   // use wordwrap() if lines are longer than 70 characters
   // $msg = wordwrap($msg,70);
