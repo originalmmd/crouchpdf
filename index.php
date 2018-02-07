@@ -12,12 +12,13 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     echo $pdf->getError();
 }
   // the message
+  // ini_set('sendmail_from', 'sales@crouchfootwear.co.za');
   $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
   $msg2 = '.pdf">here</a></h4>';
   $msg = $msg1.$_POST['catalogue_id'].$msg2;
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  $headers .= 'From: Crouch Footwear <sales@crouchfootwear.co.za>' . "\r\n";
+  $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
   $to  = $_POST['user_email'] . ', '; // note the comma
   $to .= 'originalmmd@gmail.com';
   // send email
