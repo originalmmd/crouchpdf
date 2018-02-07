@@ -14,7 +14,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
   // the message
   $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
   $msg2 = '.pdf">here</a></h4>';
-  $msg = $msg1.$catalogue_id.$msg2;
+  $msg = $msg1.$_POST['catalogue_id'].$msg2;
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
   $headers .= 'From: Crouch Footwear <sales@crouchfootwear.co.za>' . "\r\n";
@@ -54,8 +54,8 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
          </div>
          <div class="panel-body text-center">
            <label for="link">Copy and paste this link into your email message:</label>
-           <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $catalogue_id ?>.pdf">
-           <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $catalogue_id ?>.pdf" class="btn btn-primary">Download</a>
+           <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf">
+           <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="btn btn-primary">Download</a>
            <br><br><a href="http://beta.crouchsales.co.za/admin" class="btn btn-default">Back home</a>
          </div>
        </div>
