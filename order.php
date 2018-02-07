@@ -8,12 +8,12 @@ $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
-if (!$pdf->saveAs($_POST['orders/order_id'].'.pdf')) {
+if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
     echo $pdf->getError();
 }
   // the message
   // ini_set('sendmail_from', 'sales@crouchfootwear.co.za');
-  $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/';
+  $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
   $msg2 = '.pdf">here</a></h4>';
   $msg = $msg1.$_POST['order_id'].$msg2;
   $headers  = 'MIME-Version: 1.0' . "\r\n";
