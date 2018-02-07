@@ -43,25 +43,40 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
    <body>
      <br>
      <br>
-     <br>
-     <div class="col-xs-4">
+     <div class="row">
+       <div class="col-xs-4">
 
-     </div>
-     <div class="col-xs-4">
-       <div class="panel panel-success">
-         <div class="panel-heading">
-           <h3 class="panel-title">Your file is ready</h3>
-         </div>
-         <div class="panel-body text-center">
-           <label for="link">Copy and paste this link into your email message:</label>
-           <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf">
-           <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="btn btn-primary">Download</a>
-           <br><br><a href="http://beta.crouchsales.co.za/admin" class="btn btn-default">Back home</a>
-         </div>
+       </div>
+       <div class="col-xs-4">
+         <img src="crouchlogo.jpg" alt="" class="text-center" style="width:100%">
+       </div>
+       <div class="col-xs-4">
+
        </div>
      </div>
-     <div class="col-xs-4">
 
+
+     <div class="row">
+       <div class="col-xs-4">
+
+       </div>
+       <div class="col-xs-4">
+         <div class="panel panel-success">
+           <div class="panel-heading">
+             <h3 class="panel-title">Your file is ready</h3>
+           </div>
+           <div class="panel-body text-center">
+             <label for="link">Copy and paste this link into your email message:</label>
+             <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="form-control">
+             <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="btn btn-primary">Download</a>
+             <br><br><a href="http://beta.crouchsales.co.za/admin" class="btn btn-default">Back home</a>
+           </div>
+         </div>
+       </div>
+       <div class="col-xs-4">
+
+       </div>
      </div>
+
    </body>
  </html>
