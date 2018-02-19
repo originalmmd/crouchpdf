@@ -1,6 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use mikehaertl\wkhtmlto\Pdf;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'Exception.php';
+require 'PHPMailer.php';
+require 'SMTP.php';
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
 $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_id']);
@@ -11,29 +16,66 @@ $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order
 if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
     echo $pdf->getError();
 }
-  // the message
-  // ini_set('sendmail_from', 'sales@crouchfootwear.co.za');
-  $mail = new PHPMailer();
-  $mail->IsSMTP();
-  $mail->CharSet = 'UTF-8';
 
-  $mail->Host       = "mail.crouchsales.co.za"; // SMTP server example
-  $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-  $mail->SMTPAuth   = true;                  // enable SMTP authentication
-  $mail->Port       = 26;                    // set the SMTP port for the GMAIL server
-  $mail->Username   = "sales@crouchsales.co.za"; // SMTP account username example
-  $mail->Password   = "@Change.Score.50!";        // SMTP account password example
+
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+  //Server settings
+  $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+  $mail->isSMTP();                                      // Set mailer to use SMTP
+  $mail->Host = 'mail.crouchsales.co.za';  // Specify main and backup SMTP servers
+  $mail->SMTPAuth = true;                               // Enable SMTP authentication
+  $mail->Username = 'sales@crouchsales.co.za';                 // SMTP username
+  $mail->Password = '@Change.Score.50!';                           // SMTP password
+  // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 26;                                    // TCP port to connect to
+
+  $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ;
+  //Recipients
+  $mail->setFrom('sales@crouchsales.co.za', 'sales@crouchsales.co.za');
+  $mail->addAddress($_POST['user_email']);     // Add a recipient
+  $mail->addAddress('originalmmd@gmail.com');               // Name is optional
+  $mail->addReplyTo('sales@crouchsales.co.za');
+  // if (!$_POST['customer_email'] == NULL) {
+  //   $mail->addCC($_POST['customer_email']);
+  // }
+
+  // $mail->addBCC('bcc@example.com');
+
+  //Attachments
+  // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+  // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
   $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
   $msg2 = '.pdf">here</a></h4>';
   $msg = $msg1.$_POST['order_id'].$msg2;
-  $headers  = 'MIME-Version: 1.0' . "\r\n";
-  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
-  $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ; // note the comma
+  //Content
+  $mail->isHTML(true);                                  // Set email format to HTML
+  $mail->Subject = 'New order';
+  $mail->Body    = $msg;
+  // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+  $mail->send();
+  echo 'Message has been sent';
+} catch (Exception $e) {
+  echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+
+
+
+
+
+
+
+  // $headers  = 'MIME-Version: 1.0' . "\r\n";
+  // $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  // $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
+  // $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ; // note the comma
   // $to .= 'originalmmd@gmail.com';
   echo $to;
   // send email
-  mail($to,"New Crouch Footwear Catalogue",$msg, $headers);
+  // mail($to,"New Crouch Footwear Catalogue",$msg, $headers);
 
 
 
