@@ -21,7 +21,7 @@ if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
   //Server settings
-  $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+  $mail->SMTPDebug = 0;                                 // Enable verbose debug output
   $mail->isSMTP();                                      // Set mailer to use SMTP
   $mail->Host = 'mail.crouchsales.co.za';  // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -36,9 +36,9 @@ try {
   $mail->addAddress($_POST['user_email']);     // Add a recipient
   $mail->addAddress('originalmmd@gmail.com');               // Name is optional
   $mail->addReplyTo('sales@crouchsales.co.za');
-  // if (!$_POST['customer_email'] == NULL) {
-  //   $mail->addCC($_POST['customer_email']);
-  // }
+  if (strpos($_POST['customer_email'], '@')) {
+    $mail->addCC($_POST['customer_email']);
+  }
 
   // $mail->addBCC('bcc@example.com');
 
