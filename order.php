@@ -13,6 +13,16 @@ if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
 }
   // the message
   // ini_set('sendmail_from', 'sales@crouchfootwear.co.za');
+  $mail = new PHPMailer();
+  $mail->IsSMTP();
+  $mail->CharSet = 'UTF-8';
+
+  $mail->Host       = "mail.crouchsales.co.za"; // SMTP server example
+  $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+  $mail->SMTPAuth   = true;                  // enable SMTP authentication
+  $mail->Port       = 26;                    // set the SMTP port for the GMAIL server
+  $mail->Username   = "sales@crouchsales.co.za"; // SMTP account username example
+  $mail->Password   = "@Change.Score.50!";        // SMTP account password example
   $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
   $msg2 = '.pdf">here</a></h4>';
   $msg = $msg1.$_POST['order_id'].$msg2;
