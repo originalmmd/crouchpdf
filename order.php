@@ -25,17 +25,17 @@ try {
   $mail->isSMTP();                                      // Set mailer to use SMTP
   $mail->Host = 'mail.crouchsales.co.za';  // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentication
-  $mail->Username = 'sales@crouchsales.co.za';                 // SMTP username
+  $mail->Username = 'onlineorders@crouchsales.co.za';                 // SMTP username
   $mail->Password = '@Change.Score.50!';                           // SMTP password
   // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 26;                                    // TCP port to connect to
 
   $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ;
   //Recipients
-  $mail->setFrom('sales@crouchsales.co.za', 'sales@crouchsales.co.za');
+  $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
   $mail->addAddress($_POST['user_email']);     // Add a recipient
   $mail->addAddress('originalmmd@gmail.com');               // Name is optional
-  $mail->addReplyTo('sales@crouchsales.co.za');
+  $mail->addReplyTo('onlineorders@crouchsales.co.za');
   if (strpos($_POST['customer_email'], '@')) {
     $mail->addCC($_POST['customer_email']);
   }
