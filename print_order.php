@@ -94,7 +94,7 @@ if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
 
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <meta http-equiv="refresh" content="0" url="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_id'] ?>.pdf"  />
+      <!-- <meta http-equiv="refresh" content="0" url="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_id'] ?>.pdf"  /> -->
    </head>
    <body>
      <br>
