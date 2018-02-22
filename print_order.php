@@ -124,7 +124,7 @@ if (!$pdf->saveAs('orders/'.$_POST['order_number'].'.pdf')) {
          <div class="panel panel-success">
            <div class="panel-heading">
              <h3 class="panel-title">Please wait. Redirecting...</h3>
-             <h3>If this page doesn't refresh in 10 seconds, please <a href="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_id'] ?>.pdf">Click Here</a></h3>
+             <h3>If this page doesn't refresh in 10 seconds, please <a href="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_number'] ?>.pdf">Click Here</a></h3>
            </div>
          </div>
        </div>

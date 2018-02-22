@@ -9,7 +9,10 @@ require 'SMTP.php';
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
 $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_id']);
-
+$globalOptions = array(
+    'orientation' => 'landscape',           // option without argument
+);
+$pdf->setOptions($globalOptions);
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
