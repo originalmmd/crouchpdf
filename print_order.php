@@ -12,7 +12,7 @@ echo $_POST['order_number'];
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
 $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_number']);
 $globalOptions = array(
-    'orientation' => 'L',           // option without argument
+    'orientation' => 'landscape',           // option without argument
 );
 $pdf->setOptions($globalOptions);
 // On some systems you may have to set the path to the wkhtmltopdf executable
