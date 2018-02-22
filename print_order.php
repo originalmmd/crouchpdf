@@ -7,14 +7,14 @@ require 'Exception.php';
 require 'PHPMailer.php';
 require 'SMTP.php';
 echo $_POST['order_number'];
+
+// echo __DIR__ ;
+// You can pass a filename, a HTML string, an URL or an options array to the constructor
+$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_number']);
 $globalOptions = array(
     'orientation' => 'L',           // option without argument
 );
 $pdf->setOptions($globalOptions);
-// echo __DIR__ ;
-// You can pass a filename, a HTML string, an URL or an options array to the constructor
-$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_number']);
-
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
