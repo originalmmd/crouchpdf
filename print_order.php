@@ -18,7 +18,7 @@ $pdf->setOptions($globalOptions);
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
-if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
+if (!$pdf->saveAs('orders/'.$_POST['order_number'].'.pdf')) {
     echo $pdf->getError();
 }
 
