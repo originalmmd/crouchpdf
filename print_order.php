@@ -7,6 +7,10 @@ require 'Exception.php';
 require 'PHPMailer.php';
 require 'SMTP.php';
 echo $_POST['order_number'];
+$globalOptions = array(
+    'orientation' => 'L',           // option without argument
+);
+$pdf->setOptions($globalOptions);
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
 $pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_number']);
