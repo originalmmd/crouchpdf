@@ -37,7 +37,8 @@ try {
   //Recipients
   $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
   $mail->addAddress($_POST['user_email']);     // Add a recipient
-  $mail->addAddress('originalmmd@gmail.com');               // Name is optional
+  $mail->addAddress('originalmmd@gmail.com');
+  $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
   $mail->addReplyTo('onlineorders@crouchsales.co.za');
   if (strpos($_POST['customer_email'], '@')) {
     $mail->addCC($_POST['customer_email']);
