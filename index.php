@@ -1,6 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use mikehaertl\wkhtmlto\Pdf;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'Exception.php';
+require 'PHPMailer.php';
+require 'SMTP.php';
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
 $pdf = new Pdf('http://beta.crouchsales.co.za/catalogues/generate_catalogue/'.$_POST['catalogue_id']);
@@ -13,9 +18,9 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
 }
   // the message
   // ini_set('sendmail_from', 'sales@crouchfootwear.co.za');
-  $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
-  $msg2 = '.pdf">here</a></h4>';
-  $msg = $msg1.$_POST['catalogue_id'].$msg2;
+  // $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
+  // $msg2 = '.pdf">here</a></h4>';
+  // $msg = $msg1.$_POST['catalogue_id'].$msg2;
   // $headers  = 'MIME-Version: 1.0' . "\r\n";
   // $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
   // $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
@@ -57,6 +62,9 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     // $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
     // $msg2 = '.pdf">here</a></h4>';
     // $msg = $msg1.$_POST['order_id'].$msg2;
+    $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
+    $msg2 = '.pdf">here</a></h4>';
+    $msg = $msg1.$_POST['catalogue_id'].$msg2;
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'New Catalogue';
@@ -68,7 +76,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
   } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
   }
-
+  echo $to;
 
  ?>
  <!DOCTYPE html>
