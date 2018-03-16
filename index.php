@@ -16,14 +16,58 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
   $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
   $msg2 = '.pdf">here</a></h4>';
   $msg = $msg1.$_POST['catalogue_id'].$msg2;
-  $headers  = 'MIME-Version: 1.0' . "\r\n";
-  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-  $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
-  $to  = $_POST['user_email'] . ', '; // note the comma
-  $to .= 'originalmmd@gmail.com';
-  // send email
-  mail($to,"New Crouch Footwear Catalogue",$msg, $headers);
+  // $headers  = 'MIME-Version: 1.0' . "\r\n";
+  // $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+  // $headers .= 'From: sales@crouchfootwear.co.za' . "\r\n";
+  // $to  = $_POST['user_email'] . ', '; // note the comma
+  // $to .= 'originalmmd@gmail.com';
+  // // send email
+  // mail($to,"New Crouch Footwear Catalogue",$msg, $headers);
 
+
+  $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+  try {
+    //Server settings
+    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'mail.crouchsales.co.za';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'onlineorders@crouchsales.co.za';                 // SMTP username
+    $mail->Password = '@Change.Score.50!';                           // SMTP password
+    // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 26;                                    // TCP port to connect to
+
+    $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ;
+    //Recipients
+    $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
+    $mail->addAddress($_POST['user_email']);     // Add a recipient
+    $mail->addAddress('originalmmd@gmail.com');
+    // $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
+    $mail->addReplyTo('onlineorders@crouchsales.co.za');
+    if (strpos($_POST['customer_email'], '@')) {
+      $mail->addCC($_POST['customer_email']);
+    }
+
+    // $mail->addBCC('bcc@example.com');
+
+    //Attachments
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    // $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
+    // $msg2 = '.pdf">here</a></h4>';
+    // $msg = $msg1.$_POST['order_id'].$msg2;
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'New Catalogue';
+    $mail->Body    = $msg;
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+  } catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+  }
 
 
  ?>
