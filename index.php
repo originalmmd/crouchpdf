@@ -52,8 +52,13 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     //   echo "No customer selected";
     // } else {
     //   echo '<br>'.$_POST['customer_email'].' received the email.<br>';
-    echo '<br>'.$_POST['customer_email'].' received the email.<br>';
+    if (ctype_space($_POST['customer_email'])) {
+      echo "<br>No customer email<br>";
+    } else {
+      echo '<br>'.$_POST['customer_email'].' received the email.<br>';
       $mail->addAddress($_POST['customer_email']);
+    }
+
     // }
     // $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
     $mail->addReplyTo('onlineorders@crouchsales.co.za');
