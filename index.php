@@ -45,7 +45,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ;
     //Recipients
     $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
-    $mail->addAddress($_POST['user_email']);     // Add a recipient
+         // Add a recipient
     $mail->addAddress('originalmmd@gmail.com');
     // $customer_email = test_input($_POST['customer_email']);
     // if (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
@@ -54,9 +54,12 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     //   echo '<br>'.$_POST['customer_email'].' received the email.<br>';
     if (ctype_space($_POST['customer_email'])) {
       echo "<br>No customer email<br>";
+      $mail->addAddress($_POST['user_email']);
     } else {
-      echo '<br>'.$_POST['customer_email'].' received the email.<br>';
-      $mail->addCC($_POST['customer_email']);
+
+      $addresses = $_POST['customer_email'].','.$_POST['user_email'];
+      echo '<br>'.$addresses.' received the email.<br>';
+      $mail->addAddress($addresses);
     }
 
     // }
