@@ -56,16 +56,12 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
       echo "<br>No customer email<br>";
     } else {
       echo '<br>'.$_POST['customer_email'].' received the email.<br>';
-      $mail->AddCC($_POST['customer_email']);
+      $mail->addCC($_POST['customer_email']);
     }
 
     // }
     // $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
     $mail->addReplyTo('onlineorders@crouchsales.co.za');
-    if (strpos($_POST['customer_email'], '@')) {
-      $mail->addCC($_POST['customer_email']);
-    }
-
     // $mail->addBCC('bcc@example.com');
 
     //Attachments
