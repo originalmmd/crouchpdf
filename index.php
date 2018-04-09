@@ -62,12 +62,12 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     // $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
     // $msg2 = '.pdf">here</a></h4>';
     // $msg = $msg1.$_POST['order_id'].$msg2;
-    $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
+    $msg1 = '<h4>A new crouch footwear catalogue has been generated for you. This catalogue contains our '.$_POST['catalogue_name'].' range.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
     $msg2 = '.pdf">here</a></h4>';
     $msg = $msg1.$_POST['catalogue_name'].$msg2;
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'New Catalogue';
+    $mail->Subject = 'Catalogue '.$_POST['catalogue_name'];
     $mail->Body    = $msg;
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
