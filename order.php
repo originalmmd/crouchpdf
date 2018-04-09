@@ -8,7 +8,7 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
-$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_id']);
+$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['catalogue_name']);
 $globalOptions = array(
     'orientation' => 'landscape',           // option without argument
 );
