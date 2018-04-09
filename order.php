@@ -37,13 +37,6 @@ try {
   //Recipients
   $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
   $mail->addAddress($_POST['user_email']);
-  $customer_email = test_input($_POST["customer_email"]);
-  if (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
-    echo "No customer selected";
-  } else {
-    echo '<br>'.$_POST['customer_email'].' received the email.<br>';
-    $mail->addAddress($_POST['customer_email']);
-  }
   $mail->addAddress('originalmmd@gmail.com');
   $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
   $mail->addReplyTo('onlineorders@crouchsales.co.za');
