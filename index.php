@@ -64,7 +64,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     // $msg = $msg1.$_POST['order_id'].$msg2;
     $msg1 = '<h4>A new crouch footwear catalogue has been generated for you.</h4><br><h4>Get it <a href="http://108.61.211.236/crouchpdf/';
     $msg2 = '.pdf">here</a></h4>';
-    $msg = $msg1.$_POST['catalogue_id'].$msg2;
+    $msg = $msg1.$_POST['catalogue_name'].$msg2;
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'New Catalogue';
@@ -120,8 +120,8 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
            </div>
            <div class="panel-body text-center">
              <label for="link">Copy and paste this link into your email message:</label>
-             <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="form-control">
-             <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_id'] ?>.pdf" class="btn btn-primary">Download</a>
+             <input type="text" name="link" value="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_name'] ?>.pdf" class="form-control">
+             <br><br><a href="http://108.61.211.236/crouchpdf/<?php echo $_POST['catalogue_name'] ?>.pdf" class="btn btn-primary">Download</a>
              <br><br><a href="http://beta.crouchsales.co.za/admin" class="btn btn-default">Back home</a>
            </div>
          </div>

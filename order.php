@@ -8,7 +8,7 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 // echo __DIR__ ;
 // You can pass a filename, a HTML string, an URL or an options array to the constructor
-$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['catalogue_name']);
+$pdf = new Pdf('http://beta.crouchsales.co.za/order/download_pdf/'.$_POST['order_id']);
 $globalOptions = array(
     'orientation' => 'landscape',           // option without argument
 );
@@ -16,7 +16,7 @@ $pdf->setOptions($globalOptions);
 // On some systems you may have to set the path to the wkhtmltopdf executable
 // $pdf->binary = 'C:\...';
 
-if (!$pdf->saveAs('orders/'.$_POST['catalogue_name'].'.pdf')) {
+if (!$pdf->saveAs('orders/'.$_POST['order_id'].'.pdf')) {
     echo $pdf->getError();
 }
 
@@ -52,7 +52,7 @@ try {
 
   $msg1 = '<p>Dear Customer</p><p>A new crouch footwear order has been generated for you.</p><p>Best Regards</p><p>Crouch Footwear</p><p></p><h4>Download it <a href="http://108.61.211.236/crouchpdf/orders/';
   $msg2 = '.pdf">here</a></h4>';
-  $msg = $msg1.$_POST['catalogue_name'].$msg2;
+  $msg = $msg1.$_POST['order_id'].$msg2;
   //Content
   $mail->isHTML(true);                                  // Set email format to HTML
   $mail->Subject = 'New order';
@@ -125,8 +125,8 @@ try {
            </div>
            <div class="panel-body text-center">
              <label for="link">Copy and paste this link into your email message:</label>
-             <input type="text" name="link" value="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['catalogue_name'] ?>.pdf" class="form-control">
-             <br><br><a href="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['catalogue_name'] ?>.pdf" class="btn btn-primary">Download</a>
+             <input type="text" name="link" value="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_id'] ?>.pdf" class="form-control">
+             <br><br><a href="http://108.61.211.236/crouchpdf/orders/<?php echo $_POST['order_id'] ?>.pdf" class="btn btn-primary">Download</a>
              <br><br><a href="http://beta.crouchsales.co.za/admin" class="btn btn-default">Back home</a>
            </div>
          </div>
