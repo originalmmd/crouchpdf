@@ -56,7 +56,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
       echo "<br>No customer email<br>";
     } else {
       echo '<br>'.$_POST['customer_email'].' received the email.<br>';
-      $mail->addAddress($_POST['customer_email']);
+      $mail->AddCC($_POST['customer_email']);
     }
 
     // }
