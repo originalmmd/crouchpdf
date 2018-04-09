@@ -39,8 +39,9 @@ try {
   $mail->addAddress($_POST['user_email']);
   $customer_email = test_input($_POST["customer_email"]);
   if (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
-
+    echo "No customer selected";
   } else {
+    echo '<br>'.$_POST['customer_email'].' received the email.<br>';
     $mail->addAddress($_POST['customer_email']);
   }
   $mail->addAddress('originalmmd@gmail.com');
