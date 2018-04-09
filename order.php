@@ -36,7 +36,13 @@ try {
   $to  = $_POST['user_email'].', originalmmd@gmail.com,'.$_POST['customer_email'] ;
   //Recipients
   $mail->setFrom('onlineorders@crouchsales.co.za', 'onlineorders@crouchsales.co.za');
-  $mail->addAddress($_POST['user_email']);     // Add a recipient
+  $mail->addAddress($_POST['user_email']);
+  $customer_email = test_input($_POST["customer_email"]);
+  if (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
+
+  } else {
+    $mail->addAddress($_POST['customer_email']);
+  }
   $mail->addAddress('originalmmd@gmail.com');
   $mail->addAddress('melissa@crouchfootwear.co.za');               // Name is optional
   $mail->addReplyTo('onlineorders@crouchsales.co.za');
