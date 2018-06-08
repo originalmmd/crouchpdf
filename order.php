@@ -75,7 +75,8 @@ try {
     echo "Server Said ok";
     echo $server_output;
 
-} catch (Exception $e) {
+  } }
+catch (Exception $e) {
   echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo.'<br>';
   $ch = curl_init();
   $params=['status'=>'Sending Failed', 'error'=>$mail->ErrorInfo, 'order_id'=>$_POST['order_id']];
