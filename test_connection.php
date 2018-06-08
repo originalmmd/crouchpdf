@@ -28,9 +28,8 @@ mysql_select_db($dbname);
 $query = 'SELECT * FROM ' . $usertable;
 $result = mysql_query($query);
 if($result) {
-    while($row = mysql_fetch_array($result)){
+        $row = mysql_fetch_array($result)
         print_r($row);
-    }
 }
 else {
 print "Database NOT Found ";
