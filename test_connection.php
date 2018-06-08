@@ -20,9 +20,20 @@ $hostname='138.201.19.4';
 $username='crouchsalesco_crouchbeta';
 $password='@Change.Score.50!';
 $dbname='crouchsalesco_crouchbeta';
-$usertable='test';
-$yourfield = 'lat';
+$usertable='email_reportings';
 
 mysql_connect($hostname,$username, $password) OR DIE ('Unable to connect to database! Please try again later.');
 mysql_select_db($dbname);
+
+$query = 'SELECT * FROM ' . $usertable;
+$result = mysql_query($query);
+if($result) {
+    while($row = mysql_fetch_array($result)){
+        print_r($row);
+    }
+}
+else {
+print "Database NOT Found ";
+mysql_close($db_handle);
+}
  ?>
