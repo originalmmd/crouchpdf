@@ -67,13 +67,32 @@
 //
 // //close connection
 // curl_close($ch);
-$params=['status'=>'Testing', 'error'=>'none', 'order_id'=>999);
-$defaults = array(
-CURLOPT_URL => 'http://beta.crouchsales.co.za/order/email_reportings_post',
-CURLOPT_POST => true,
-CURLOPT_POSTFIELDS => $params,
-);
-$ch = curl_init();
-curl_setopt_array($ch, ($options + $defaults));
 
+// $defaults = array(
+// CURLOPT_URL => 'http://beta.crouchsales.co.za/order/email_reportings_post',
+// CURLOPT_POST => true,
+// CURLOPT_POSTFIELDS => $params,
+// );
+// $ch = curl_init();
+// curl_setopt_array($ch, ($defaults));
+
+
+//
+// A very simple PHP example that sends a HTTP POST to a remote site
+//
+
+$ch = curl_init();
+$params=['status'=>'Testing', 'error'=>'none', 'order_id'=>999];
+curl_setopt($ch, CURLOPT_URL,"http://beta.crouchsales.co.za/order/email_reportings_post");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
+// receive server response ...
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$server_output = curl_exec($ch);
+curl_close ($ch);
+// further processing ....
+if ($server_output == "OK") {
+  echo "Server Said ok";
+  echo $server_output;
+}
  ?>

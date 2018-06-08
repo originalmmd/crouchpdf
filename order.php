@@ -61,8 +61,36 @@ try {
 
   $mail->send();
   echo 'Message has been sent';
+  $ch = curl_init();
+  $params=['status'=>'Sending Sucess', 'error'=>'None', 'order_id'=>$_POST['order_id']];
+  curl_setopt($ch, CURLOPT_URL,"http://beta.crouchsales.co.za/order/email_reportings_post");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
+  // receive server response ...
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $server_output = curl_exec($ch);
+  curl_close ($ch);
+  // further processing ....
+  if ($server_output == "OK") {
+    echo "Server Said ok";
+    echo $server_output;
+
 } catch (Exception $e) {
-  echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+  echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo.'<br>';
+  $ch = curl_init();
+  $params=['status'=>'Sending Failed', 'error'=>$mail->ErrorInfo, 'order_id'=>$_POST['order_id']];
+  curl_setopt($ch, CURLOPT_URL,"http://beta.crouchsales.co.za/order/email_reportings_post");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
+  // receive server response ...
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $server_output = curl_exec($ch);
+  curl_close ($ch);
+  // further processing ....
+  if ($server_output == "OK") {
+    echo "Server Said ok";
+    echo $server_output;
+  }
 }
 
 
