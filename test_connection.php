@@ -67,7 +67,7 @@
 //
 // //close connection
 // curl_close($ch);
-$params=['status'=>'Testing', 'error'=>'none', 'order_id'=>999)
+$params=['status'=>'Testing', 'error'=>'none', 'order_id'=>999);
 $defaults = array(
 CURLOPT_URL => 'http://beta.crouchsales.co.za/order/email_reportings_post',
 CURLOPT_POST => true,
