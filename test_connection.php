@@ -25,11 +25,10 @@ $usertable='email_reportings';
 mysql_connect($hostname,$username, $password) OR DIE ('Unable to connect to database! Please try again later.');
 mysql_select_db($dbname);
 
-$query = 'SELECT * FROM ' . $usertable;
-$result = mysql_query($query);
+$result = mysql_query("INSERT INTO email_reportings (status,error,order_id) VALUES ('Test Done','No Error','999')");
+// $result = mysql_query($query);
 if($result) {
-        $row = mysql_fetch_assoc($result)
-        print_r($row);
+  echo "Done";
 }
 else {
 print "Database NOT Found ";
