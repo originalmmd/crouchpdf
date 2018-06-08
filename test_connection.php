@@ -16,7 +16,7 @@
 // print_r($results);
 echo "working";
 
-$hostname='138.201.19.4';
+$hostname='crouchsales.co.za';
 $username='crouchsalesco_crouchbeta';
 $password='@Change.Score.50!';
 $dbname='crouchsalesco_crouchbeta';
