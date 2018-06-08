@@ -28,7 +28,7 @@ mysql_select_db($dbname);
 $query = 'SELECT * FROM ' . $usertable;
 $result = mysql_query($query);
 if($result) {
-        $row = mysql_fetch_array($result)
+        $row = mysql_fetch_assoc($result)
         print_r($row);
 }
 else {
