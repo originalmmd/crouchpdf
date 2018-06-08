@@ -12,7 +12,7 @@ if (!$db_selected) {
 
 $result = mysql_query("SELECT * FROM email_reportings");
 $results = mysql_fetch_assoc($result);
-echo $results;
+print_r($results);
 
 
  ?>
