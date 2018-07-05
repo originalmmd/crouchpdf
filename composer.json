@@ -1,5 +1,6 @@
 {
     "require": {
-        "mikehaertl/phpwkhtmltopdf": "^2.3"
+        "mikehaertl/phpwkhtmltopdf": "^2.3",
+        "phpoffice/phpword": "^0.14.0"
     }
 }
