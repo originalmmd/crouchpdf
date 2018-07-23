@@ -38,7 +38,7 @@ if (!$pdf->saveAs($_POST['catalogue_name'].'.pdf')) {
     $mail->Host = 'mail.crouchsales.co.za';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'onlineorders@crouchsales.co.za';                 // SMTP username
-    $mail->Password = '@Change.Score.50!';                           // SMTP password
+    $mail->Password = '@Change.Score.50!!';                           // SMTP password
     // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 26;                                    // TCP port to connect to
 
